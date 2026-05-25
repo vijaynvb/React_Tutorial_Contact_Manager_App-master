@@ -1,4 +1,9 @@
 {
+  "stocks": [
+    { "id": 1,"symbol": "AAPL", "price": 150 },
+    { "id": 2,"symbol": "GOOGL", "price": 2800 },
+    { "id": 3,"symbol": "AMZN", "price": 3400 }
+  ],
   "employees": [
     {
       "id": 1,
