@@ -53,6 +53,7 @@ function walletReducer(state: WalletState, action: WalletAction): WalletState {
             amount: action.payload,
             description: action.description ?? "Deposit",
             timestamp: new Date().toLocaleTimeString(),
+            balanceAfter: state.balance + action.payload, // track balance after transactions
           },
         ],
       };
@@ -69,6 +70,7 @@ function walletReducer(state: WalletState, action: WalletAction): WalletState {
             amount: action.payload,
             description: action.description ?? "Withdrawal",
             timestamp: new Date().toLocaleTimeString(),
+            balanceAfter: state.balance - action.payload, // track balance after transactions
           },
         ],
       };
@@ -177,6 +179,7 @@ function Wallet(): JSX.Element {
               <span style={{ color: t.type === "credit" ? "green" : "red", fontWeight: "bold" }}>
                 {t.type === "credit" ? "+" : "−"}₹{t.amount.toLocaleString()}
               </span>
+              <span style={{ fontSize: 12, color: "#888" }}>Balance: ₹{t.balanceAfter?.toLocaleString()}</span>
             </li>
           ))}
         </ul>
